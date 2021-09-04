@@ -46,6 +46,11 @@ class FRUIT:
         self.pos = Vector2(self.x, self.y)
 
 
+def game_over():
+    pygame.quit()
+    sys.exit()
+
+
 class MAIN:
     def __init__(self):
         self.snake = SNAKE()
@@ -71,15 +76,11 @@ class MAIN:
 
     def check_fail(self):
         if not 0 <= self.snake.body[0].x < cell_number or not 0 <= self.snake.body[0].y < cell_number:
-            self.game_over()
+            game_over()
 
         for block in self.snake.body[1:]:
             if block == self.snake.body[0]:
-                self.game_over()
-
-    def game_over(self):
-        pygame.quit()
-        sys.exit()
+                game_over()
 
 
 pygame.init()
